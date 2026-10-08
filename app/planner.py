@@ -1,17 +1,9 @@
+import json
 from datetime import datetime, timedelta
+from pathlib import Path
 from typing import Any, Dict, List
 
 from app.models import DailyContext, Task
-
-
-@dataclass
-class PlannedSession:
-    subject: str
-    chapter: str
-    task_type: str
-    start_time: str
-    duration_minutes: int
-    reason: str
 
 
 def parse_clock(value: str) -> datetime:
@@ -63,15 +55,14 @@ def build_evening_plan(
         if session_minutes < 15:
             continue
 
-        start_label = format_clock(current_time)
         sessions.append(
             {
                 "subject": task.subject,
                 "chapter": task.chapter,
                 "task_type": task.task_type,
-                "start_time": start_label,
+                "start_time": format_clock(current_time),
                 "duration_minutes": session_minutes,
-                "reason": f"Priority {task.priority} / Urgency {task.urgency}"
+                "reason": f"Priority {task.priority} / Urgency {task.urgency}",
             }
         )
 

@@ -4,6 +4,7 @@ from pathlib import Path
 from app.decision_engine import recommend_next_action
 from app.models import DailyContext, SubjectStatus, Task, UserProfile
 from app.planner import plan_evening
+from app.progress_tracker import build_progress_summary, mark_task_complete
 
 
 def load_profile(path: str) -> UserProfile:
@@ -29,8 +30,11 @@ def load_tasks(path: str) -> list[Task]:
 
 def main() -> None:
     base_dir = Path(__file__).resolve().parent.parent
+    tasks_path = str(base_dir / "data" / "tasks.json")
+    progress_log_path = str(base_dir / "data" / "progress_log.json")
+
     profile = load_profile(str(base_dir / "data" / "profile.json"))
-    tasks = load_tasks(str(base_dir / "data" / "tasks.json"))
+    tasks = load_tasks(tasks_path)
 
     daily_context = DailyContext(
         current_time="19:30",
@@ -43,6 +47,7 @@ def main() -> None:
 
     action = recommend_next_action(profile, daily_context, tasks)
     plan = plan_evening(tasks, daily_context)
+    summary = build_progress_summary(tasks_path, progress_log_path)
 
     print("Recommended next action:")
     print(f"- What to do: {action['what_to_do']}")
@@ -58,6 +63,12 @@ def main() -> None:
             f"  * {session['start_time']} - {session['subject']} / {session['chapter']} / {session['task_type']} "
             f"({session['duration_minutes']} min)"
         )
+
+    print()
+    print("Progress snapshot:")
+    print(f"- Completed tasks: {summary['completed_tasks']}")
+    print(f"- Pending tasks: {summary['pending_tasks']}")
+    print(f"- Completed today: {summary['completed_today']}")
 
 
 if __name__ == "__main__":
