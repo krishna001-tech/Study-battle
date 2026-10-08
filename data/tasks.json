@@ -1,0 +1,37 @@
+{
+  "tasks": [
+    {
+      "subject": "Physics",
+      "chapter": "Rotational Motion",
+      "task_type": "advanced_problems",
+      "priority": 5,
+      "urgency": 5,
+      "estimated_minutes": 45,
+      "status": "not_started",
+      "deadline": "today",
+      "notes": "Strong chapter but weak in rolling motion"
+    },
+    {
+      "subject": "Chemistry",
+      "chapter": "Thermodynamics",
+      "task_type": "formula_revision",
+      "priority": 3,
+      "urgency": 3,
+      "estimated_minutes": 20,
+      "status": "not_started",
+      "deadline": "tomorrow",
+      "notes": "Revise key formulas"
+    },
+    {
+      "subject": "Maths",
+      "chapter": "Applications of Derivatives",
+      "task_type": "basic_problems",
+      "priority": 4,
+      "urgency": 2,
+      "estimated_minutes": 30,
+      "status": "not_started",
+      "deadline": "today",
+      "notes": "Practice derivative-based questions"
+    }
+  ]
+}

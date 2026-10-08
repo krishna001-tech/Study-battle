@@ -1,0 +1,26 @@
+{
+  "name": "Krishna",
+  "class_name": "XI",
+  "exam": "JEE Main + Advanced",
+  "goal": "Prepare for JEE while building strong conceptual understanding in Physics, Chemistry, and Mathematics.",
+  "subjects": [
+    {
+      "name": "Physics",
+      "current_chapter": "Rotational Motion",
+      "backlog": ["Torque questions", "Rolling motion"],
+      "priority": 1
+    },
+    {
+      "name": "Chemistry",
+      "current_chapter": "Thermodynamics",
+      "backlog": ["NCERT backlogs", "Numerical practice"],
+      "priority": 2
+    },
+    {
+      "name": "Maths",
+      "current_chapter": "Applications of Derivatives",
+      "backlog": ["Graph practice", "Advanced MCQs"],
+      "priority": 1
+    }
+  ]
+}
